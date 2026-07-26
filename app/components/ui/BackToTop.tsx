@@ -30,14 +30,66 @@ export default function BackToTop() {
       {visible && (
         <motion.button
           onClick={scrollToTop}
-          initial={{ opacity: 0, scale: 0.5, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.5, y: 20 }}
-          transition={{ duration: 0.3 }}
-          className="fixed bottom-8 right-8 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-cyan-400 text-black shadow-lg transition hover:scale-110 hover:bg-cyan-300"
+          initial={{
+            opacity: 0,
+            scale: 0.6,
+            y: 30,
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+            y: 0,
+          }}
+          exit={{
+            opacity: 0,
+            scale: 0.6,
+            y: 30,
+          }}
+          transition={{
+            duration: 0.35,
+            ease: "easeOut",
+          }}
+          whileHover={{
+            scale: 1.12,
+          }}
+          whileTap={{
+            scale: 0.9,
+          }}
+          className="
+            fixed
+            bottom-8
+            right-8
+            z-50
+
+            flex
+            h-12
+            w-12
+            items-center
+            justify-center
+
+            rounded-2xl
+
+            border
+            border-cyan-300/30
+
+            bg-white/10
+
+            text-cyan-300
+
+            backdrop-blur-xl
+
+            shadow-[0_0_25px_rgba(34,211,238,0.45)]
+
+            transition-all
+
+            hover:border-purple-400/50
+            hover:text-white
+
+            hover:shadow-[0_0_35px_rgba(168,85,247,0.7)]
+          "
           aria-label="Back to Top"
         >
-          <ChevronUp size={24} />
+          
         </motion.button>
       )}
     </AnimatePresence>
