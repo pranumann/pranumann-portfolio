@@ -1,11 +1,14 @@
 import {
-  Mail,
-  Phone,
   MapPin,
   GitBranch,
-  Linkedin,
-  Instagram,
+  Mail,
+  Phone,
 } from "lucide-react";
+
+import {
+  FaLinkedin,
+  FaInstagram,
+} from "react-icons/fa6";
 
 export const contactData = {
   title: "Let's Build Something Amazing",
@@ -28,13 +31,13 @@ export const contactData = {
 
     {
       name: "LinkedIn",
-      icon: Linkedin,
+      icon: FaLinkedin,
       url: "https://linkedin.com/in/pranumann",
     },
 
     {
       name: "Instagram",
-      icon: Instagram,
+      icon: FaInstagram,
       url: "https://instagram.com/pranumann",
     },
   ],
