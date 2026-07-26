@@ -1,31 +1,117 @@
-export type Skill = {
-  name: string;
-  level: number;
-  category: string;
-};
+import {
+  SiGo,
+  SiPython,
+  SiFastapi,
+  SiLangchain,
+  SiDocker,
+  SiKubernetes,
+  SiPostgresql,
+  SiMongodb,
+  SiRedis,
+  SiGit,
+  SiGithub,
+  SiLinux,
+  SiJavascript,
+  SiTypescript,
+  SiReact,
+  SiNextdotjs,
+} from "react-icons/si";
 
-export const skills: Skill[] = [
-  // Programming
-  { name: "Go", level: 95, category: "Programming" },
-  { name: "Python", level: 95, category: "Programming" },
-  { name: "JavaScript", level: 90, category: "Programming" },
-  { name: "TypeScript", level: 90, category: "Programming" },
-
-  // Backend
-  { name: "FastAPI", level: 95, category: "Backend" },
-  { name: "Gin", level: 90, category: "Backend" },
-  { name: "REST API", level: 95, category: "Backend" },
-  { name: "PostgreSQL", level: 90, category: "Database" },
-
-  // AI
-  { name: "LangChain", level: 95, category: "AI" },
-  { name: "LangGraph", level: 95, category: "AI" },
-  { name: "LLMs", level: 90, category: "AI" },
-  { name: "OpenAI API", level: 90, category: "AI" },
-
-  // Cloud
-  { name: "Docker", level: 90, category: "DevOps" },
-  { name: "Kubernetes", level: 85, category: "DevOps" },
-  { name: "Git", level: 95, category: "Tools" },
-  { name: "Linux", level: 90, category: "Tools" },
+export const skillsData = [
+  {
+    title: "Go",
+    level: "Advanced",
+    icon: SiGo,
+    color: "#00ADD8",
+  },
+  {
+    title: "Python",
+    level: "Advanced",
+    icon: SiPython,
+    color: "#FFD43B",
+  },
+  {
+    title: "FastAPI",
+    level: "Advanced",
+    icon: SiFastapi,
+    color: "#00C7B7",
+  },
+  {
+    title: "LangChain",
+    level: "Advanced",
+    icon: SiLangchain,
+    color: "#00E676",
+  },
+  {
+    title: "Docker",
+    level: "Advanced",
+    icon: SiDocker,
+    color: "#2496ED",
+  },
+  {
+    title: "Kubernetes",
+    level: "Advanced",
+    icon: SiKubernetes,
+    color: "#326CE5",
+  },
+  {
+    title: "PostgreSQL",
+    level: "Advanced",
+    icon: SiPostgresql,
+    color: "#336791",
+  },
+  {
+    title: "MongoDB",
+    level: "Advanced",
+    icon: SiMongodb,
+    color: "#47A248",
+  },
+  {
+    title: "Redis",
+    level: "Intermediate",
+    icon: SiRedis,
+    color: "#DC382D",
+  },
+  {
+    title: "Git",
+    level: "Advanced",
+    icon: SiGit,
+    color: "#F05032",
+  },
+  {
+    title: "GitHub",
+    level: "Advanced",
+    icon: SiGithub,
+    color: "#FFFFFF",
+  },
+  {
+    title: "Linux",
+    level: "Advanced",
+    icon: SiLinux,
+    color: "#FCC624",
+  },
+  {
+    title: "JavaScript",
+    level: "Advanced",
+    icon: SiJavascript,
+    color: "#F7DF1E",
+  },
+  {
+    title: "TypeScript",
+    level: "Advanced",
+    icon: SiTypescript,
+    color: "#3178C6",
+  },
+  {
+    title: "React",
+    level: "Intermediate",
+    icon: SiReact,
+    color: "#61DAFB",
+  },
+  {
+    title: "Next.js",
+    level: "Intermediate",
+    icon: SiNextdotjs,
+    color: "#FFFFFF",
+  },
 ];

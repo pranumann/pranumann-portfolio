@@ -1,36 +1,31 @@
 export const aboutData = {
-  title: "About Me",
+  title: "Building Intelligent AI Products & Scalable Backend Systems",
 
-  subtitle: "AI Software Engineer & Backend Developer",
+  subtitle:
+    "AI Software Engineer • Backend Developer • Cloud-Native Enthusiast",
 
-  description: `
-I am Praveen Yadav, an AI Software Engineer passionate about building
-intelligent applications, scalable backend systems and cloud-native
-software.
+  description: `I'm Praveen Yadav, an AI Software Engineer passionate about designing and building intelligent software that solves real-world problems.
 
-I enjoy solving real-world problems using Go, Python, FastAPI,
-LangChain, LangGraph, Docker and Kubernetes.
+My expertise includes Generative AI, AI Agents, Backend Engineering and Cloud-Native Development using Go, Python, FastAPI, LangChain, LangGraph, Docker, Kubernetes and modern software architecture.
 
-My focus is on AI Agents, Automation, Distributed Systems,
-Microservices and modern software architecture.
-`,
+I focus on creating production-ready applications that are scalable, reliable, secure and engineered for long-term impact.`,
 
   stats: [
+    {
+      number: "20+",
+      label: "Projects Completed",
+    },
+    {
+      number: "2",
+      label: "Professional Internships",
+    },
     {
       number: "15+",
       label: "Technologies",
     },
     {
-      number: "20+",
-      label: "Projects",
-    },
-    {
       number: "100%",
-      label: "Passion",
-    },
-    {
-      number: "24/7",
-      label: "Learning",
+      label: "Commitment to Learning",
     },
   ],
 };

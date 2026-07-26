@@ -1,84 +1,302 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Star } from "lucide-react";
+import { ArrowUpRight, Sparkles } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
-import { Project } from "./projectsData";
+
+type Props = {
+  title: string;
+  description: string;
+  tech: string[];
+  image: string;
+  github: string;
+  demo: string;
+};
 
 export default function ProjectCard({
-  project,
-}: {
-  project: Project;
-}) {
+  title,
+  description,
+  tech,
+  github,
+  demo,
+}: Props) {
   return (
-    <motion.div
+    <motion.article
       whileHover={{
-        y: -10,
-        scale: 1.02,
+        y: -12,
       }}
-      className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl transition-all"
+      transition={{
+        duration: 0.35,
+        ease: "easeOut",
+      }}
+      className="
+        group
+        relative
+        flex
+        w-full
+        max-w-[560px]
+        flex-col
+        items-center
+        overflow-hidden
+        rounded-[32px]
+        border
+        border-white/10
+        bg-transparent
+        p-8
+        text-center
+        backdrop-blur-sm
+        transition-all
+        duration-500
+        hover:border-cyan-400/40
+        hover:bg-white/5
+      "
     >
-      {/* Preview */}
 
-      <div className="relative flex h-56 items-center justify-center bg-gradient-to-br from-cyan-500/20 to-blue-600/20">
+      {/* Glass Reflection */}
 
-        <h3 className="text-2xl font-black text-cyan-300">
-          {project.title}
-        </h3>
+      <div
+        className="
+          absolute
+          inset-0
+          rounded-[32px]
+          bg-gradient-to-br
+          from-white/5
+          via-transparent
+          to-transparent
+          opacity-0
+          transition
+          duration-500
+          group-hover:opacity-100
+        "
+      />
 
-        {project.featured && (
-          <div className="absolute right-5 top-5 flex items-center gap-2 rounded-full bg-cyan-400 px-3 py-1 text-sm font-bold text-black">
-            <Star size={15} />
-            Featured
-          </div>
-        )}
+
+      {/* Badge */}
+
+      <div className="relative">
+
+        <span
+          className="
+            inline-flex
+            items-center
+            gap-2
+            rounded-full
+            border
+            border-cyan-400/30
+            bg-cyan-400/10
+            px-5
+            py-2
+            text-xs
+            font-semibold
+            uppercase
+            tracking-[0.28em]
+            text-cyan-300
+            backdrop-blur-md
+          "
+        >
+          <Sparkles size={14} />
+          AI Project
+        </span>
 
       </div>
 
-      <div className="p-7">
 
-        <p className="leading-7 text-slate-400">
-          {project.description}
+
+      {/* Content */}
+
+      <div
+        className="
+          relative
+          mt-8
+          flex
+          w-full
+          flex-col
+          items-center
+          text-center
+        "
+      >
+
+        {/* Title */}
+
+        <h3
+          className="
+            text-center
+            text-3xl
+            font-extrabold
+            tracking-tight
+            text-white
+          "
+        >
+          {title}
+        </h3>
+
+
+
+        {/* Description */}
+
+        <p
+          className="
+            mx-auto
+            mt-5
+            max-w-md
+            text-center
+            leading-8
+            text-slate-400
+          "
+        >
+          {description}
         </p>
 
-        <div className="mt-6 flex flex-wrap gap-2">
 
-          {project.tech.map((tech) => (
-            <span
-              key={tech}
-              className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-sm text-cyan-300"
+
+        {/* Tech Stack */}
+
+        <div
+          className="
+            mt-8
+            flex
+            flex-wrap
+            justify-center
+            gap-3
+          "
+        >
+
+          {tech.map((item, index) => (
+
+            <motion.span
+              key={item}
+              initial={{
+                opacity: 0,
+                scale: 0.85,
+              }}
+              whileInView={{
+                opacity: 1,
+                scale: 1,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                delay: index * 0.05,
+              }}
+              className="
+                rounded-full
+                border
+                border-cyan-400/20
+                bg-white/5
+                px-4
+                py-2
+                text-sm
+                font-medium
+                text-cyan-300
+                transition-all
+                duration-300
+                hover:border-cyan-400/40
+                hover:bg-cyan-400/10
+              "
             >
-              {tech}
-            </span>
+              {item}
+            </motion.span>
+
           ))}
 
         </div>
 
-        <div className="mt-8 flex gap-4">
 
-          <a
-            href={project.github}
+
+        {/* Buttons */}
+
+        <div
+          className="
+            mt-10
+            flex
+            w-full
+            justify-center
+            gap-4
+            sm:flex-row
+            flex-col
+          "
+        >
+
+          {/* Github */}
+
+          <motion.a
+            whileHover={{
+              scale: 1.04,
+            }}
+            whileTap={{
+              scale: 0.97,
+            }}
+            href={github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 rounded-xl border border-white/10 px-5 py-3 transition hover:border-cyan-400"
+            className="
+              inline-flex
+              flex-1
+              items-center
+              justify-center
+              gap-2
+              rounded-2xl
+              border
+              border-white/10
+              bg-white/5
+              px-5
+              py-4
+              font-semibold
+              text-white
+              transition-all
+              duration-300
+              hover:border-cyan-400/40
+              hover:bg-white/10
+            "
           >
-            <FaGithub />
-            GitHub
-          </a>
+            <FaGithub size={20} />
+            Code
+          </motion.a>
 
-          <a
-            href={project.live}
+
+
+          {/* Demo */}
+
+          <motion.a
+            whileHover={{
+              scale: 1.04,
+            }}
+            whileTap={{
+              scale: 0.97,
+            }}
+            href={demo}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 rounded-xl bg-cyan-400 px-5 py-3 font-semibold text-black transition hover:bg-cyan-300"
+            className="
+              inline-flex
+              flex-1
+              items-center
+              justify-center
+              gap-2
+              rounded-2xl
+              bg-gradient-to-r
+              from-cyan-400
+              via-sky-400
+              to-blue-500
+              px-5
+              py-4
+              font-bold
+              text-slate-950
+              transition-all
+              duration-300
+              hover:shadow-[0_20px_60px_rgba(34,211,238,.35)]
+            "
           >
-            <ExternalLink size={18} />
-            Live Demo
-          </a>
+            Demo
+            <ArrowUpRight size={18} />
+          </motion.a>
 
         </div>
 
+
       </div>
-    </motion.div>
+
+    </motion.article>
   );
 }
