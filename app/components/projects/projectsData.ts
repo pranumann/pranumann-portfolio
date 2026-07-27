@@ -4,7 +4,7 @@ export const projectsData = [
     description:
       "Enterprise AI support assistant powered by LLMs with Retrieval-Augmented Generation (RAG), conversation memory, vector search and real-time responses for intelligent customer interactions.",
 
-    image: "C:\Users\monar\OneDrive\Desktop\pranumann-portfolio\app\components\projects\ai-agent.jpg.jpeg",
+    image: "/projects/ai-agent.jpg",
 
     github: "https://github.com/pranumann",
 

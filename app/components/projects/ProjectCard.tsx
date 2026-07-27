@@ -10,7 +10,8 @@ type Props = {
   tech: string[];
   image: string;
   github: string;
-  demo: string;
+  live: string;
+  featured?: boolean;
 };
 
 export default function ProjectCard({
@@ -18,13 +19,11 @@ export default function ProjectCard({
   description,
   tech,
   github,
-  demo,
+  live,
 }: Props) {
   return (
     <motion.article
-      whileHover={{
-        y: -12,
-      }}
+      whileHover={{ y: -12 }}
       transition={{
         duration: 0.35,
         ease: "easeOut",
@@ -51,9 +50,7 @@ export default function ProjectCard({
         hover:bg-white/5
       "
     >
-
       {/* Glass Reflection */}
-
       <div
         className="
           absolute
@@ -70,11 +67,8 @@ export default function ProjectCard({
         "
       />
 
-
       {/* Badge */}
-
       <div className="relative">
-
         <span
           className="
             inline-flex
@@ -97,13 +91,9 @@ export default function ProjectCard({
           <Sparkles size={14} />
           AI Project
         </span>
-
       </div>
 
-
-
       {/* Content */}
-
       <div
         className="
           relative
@@ -115,9 +105,7 @@ export default function ProjectCard({
           text-center
         "
       >
-
         {/* Title */}
-
         <h3
           className="
             text-center
@@ -130,10 +118,7 @@ export default function ProjectCard({
           {title}
         </h3>
 
-
-
         {/* Description */}
-
         <p
           className="
             mx-auto
@@ -147,10 +132,7 @@ export default function ProjectCard({
           {description}
         </p>
 
-
-
         {/* Tech Stack */}
-
         <div
           className="
             mt-8
@@ -160,9 +142,7 @@ export default function ProjectCard({
             gap-3
           "
         >
-
           {tech.map((item, index) => (
-
             <motion.span
               key={item}
               initial={{
@@ -197,15 +177,10 @@ export default function ProjectCard({
             >
               {item}
             </motion.span>
-
           ))}
-
         </div>
 
-
-
         {/* Buttons */}
-
         <div
           className="
             mt-10
@@ -217,16 +192,10 @@ export default function ProjectCard({
             flex-col
           "
         >
-
-          {/* Github */}
-
+          {/* GitHub */}
           <motion.a
-            whileHover={{
-              scale: 1.04,
-            }}
-            whileTap={{
-              scale: 0.97,
-            }}
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
             href={github}
             target="_blank"
             rel="noopener noreferrer"
@@ -254,18 +223,11 @@ export default function ProjectCard({
             Code
           </motion.a>
 
-
-
-          {/* Demo */}
-
+          {/* Live Demo */}
           <motion.a
-            whileHover={{
-              scale: 1.04,
-            }}
-            whileTap={{
-              scale: 0.97,
-            }}
-            href={demo}
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
+            href={live}
             target="_blank"
             rel="noopener noreferrer"
             className="
@@ -288,15 +250,11 @@ export default function ProjectCard({
               hover:shadow-[0_20px_60px_rgba(34,211,238,.35)]
             "
           >
-            Demo
+            Live Demo
             <ArrowUpRight size={18} />
           </motion.a>
-
         </div>
-
-
       </div>
-
     </motion.article>
   );
 }
