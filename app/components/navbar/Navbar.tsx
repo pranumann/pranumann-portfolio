@@ -119,7 +119,7 @@ export default function Navbar() {
         <div className="hidden lg:block">
 
           <motion.a
-            href="/resume/Praveen_Yadav_Resume.pdf"
+            href="/resume.pdf"
             download
 
             whileHover={{
