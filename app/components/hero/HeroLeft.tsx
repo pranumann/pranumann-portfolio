@@ -521,7 +521,7 @@ export default function HeroLeft() {
 
       <motion.a
 
-      href="/resume.pdf"
+      href="/resume/resume.pdf"
 
       target="_blank"
 

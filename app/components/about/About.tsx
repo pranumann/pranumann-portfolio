@@ -1,184 +1,162 @@
 "use client";
 
 import { motion } from "framer-motion";
-import AboutCard from "./AboutCard";
-import { aboutData } from "./aboutData";
+import CountUp from "react-countup";
+import { useInView } from "react-intersection-observer";
 
-export default function About() {
+type AboutCardProps = {
+  number: string;
+  label: string;
+};
+
+export default function AboutCard({
+  number,
+  label,
+}: AboutCardProps) {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.35,
+  });
+
+  // Extract numeric value
+  const numericValue = parseInt(number.replace(/\D/g, "")) || 0;
+
+  // Detect prefix & suffix
+  const prefix = number.startsWith("+") ? "+" : "";
+  const suffix = number.endsWith("+")
+    ? "+"
+    : number.endsWith("%")
+    ? "%"
+    : "";
+
   return (
-    <section
-      id="about"
-      className="relative py-32 sm:py-36"
+    <motion.div
+      ref={ref}
+      whileHover={{
+        y: -8,
+        scale: 1.03,
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 250,
+        damping: 18,
+      }}
+      className="
+        group
+        relative
+        w-full
+        overflow-hidden
+        rounded-3xl
+        border
+        border-white/10
+        bg-white/5
+        p-8
+        backdrop-blur-xl
+        transition-all
+        duration-500
+        hover:border-cyan-400/40
+        hover:shadow-[0_20px_60px_rgba(34,211,238,0.18)]
+      "
     >
-      <div className="mx-auto flex max-w-7xl flex-col items-center px-6">
+      {/* Glow Effect */}
+      <div
+        className="
+          absolute
+          inset-0
+          opacity-0
+          transition-opacity
+          duration-500
+          group-hover:opacity-100
+          bg-gradient-to-br
+          from-cyan-500/10
+          via-blue-500/10
+          to-purple-500/10
+        "
+      />
 
-        {/* Heading */}
+      {/* Top Border Glow */}
+      <div
+        className="
+          absolute
+          left-0
+          top-0
+          h-[2px]
+          w-full
+          scale-x-0
+          bg-gradient-to-r
+          from-cyan-400
+          via-blue-400
+          to-purple-400
+          transition-transform
+          duration-500
+          group-hover:scale-x-100
+        "
+      />
 
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mx-auto flex w-full max-w-5xl flex-col items-center text-center"
-        >
+      {/* Number */}
+      <h3
+        className="
+          relative
+          text-center
+          text-5xl
+          font-black
+          tracking-tight
+          bg-gradient-to-r
+          from-cyan-400
+          via-blue-400
+          to-purple-400
+          bg-clip-text
+          text-transparent
+        "
+      >
+        {inView ? (
+          <>
+            {prefix}
+            <CountUp
+              end={numericValue}
+              duration={2.5}
+              separator=","
+            />
+            {suffix}
+          </>
+        ) : (
+          number
+        )}
+      </h3>
 
-          {/* Badge */}
+      {/* Label */}
+      <p
+        className="
+          relative
+          mt-5
+          text-center
+          text-sm
+          font-semibold
+          uppercase
+          tracking-[0.25em]
+          text-slate-400
+        "
+      >
+        {label}
+      </p>
 
-          <span
-            className="
-              inline-flex
-              rounded-full
-              border
-              border-cyan-400/20
-              bg-white/5
-              px-6
-              py-3
-              text-xs
-              font-semibold
-              uppercase
-              tracking-[0.35em]
-              text-cyan-300
-              backdrop-blur-md
-            "
-          >
-            ABOUT ME
-          </span>
-
-          {/* Title */}
-
-          <h2
-            className="
-              mt-10
-              text-center
-              text-4xl
-              font-black
-              leading-tight
-              text-white
-              sm:text-5xl
-              lg:text-6xl
-            "
-          >
-            {aboutData.title}
-          </h2>
-
-          {/* Subtitle */}
-
-          <p
-            className="
-              mt-6
-              text-center
-              text-xl
-              font-semibold
-              bg-gradient-to-r
-              from-cyan-400
-              to-blue-500
-              bg-clip-text
-              text-transparent
-            "
-          >
-            {aboutData.subtitle}
-          </p>
-
-          {/* Description */}
-
-          <p
-            className="
-              mx-auto
-              mt-10
-              max-w-4xl
-              text-center
-              text-[17px]
-              leading-9
-              text-slate-400
-            "
-          >
-            {aboutData.description}
-          </p>
-
-        </motion.div>
-
-        {/* Stats */}
-
-        <motion.div
-          initial={{ opacity: 0, y: 70 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{
-            delay: 0.2,
-            duration: 0.8,
-          }}
-          className="
-            mt-20
-            grid
-            w-full
-            max-w-6xl
-            gap-7
-            sm:grid-cols-2
-            lg:grid-cols-4
-            place-items-center
-          "
-        >
-          {aboutData.stats.map((item, index) => (
-            <motion.div
-              key={item.label}
-              initial={{
-                opacity: 0,
-                scale: 0.8,
-              }}
-              whileInView={{
-                opacity: 1,
-                scale: 1,
-              }}
-              viewport={{ once: true }}
-              transition={{
-                delay: index * 0.1,
-              }}
-              className="flex w-full justify-center"
-            >
-              <AboutCard
-                number={item.number}
-                label={item.label}
-              />
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Developer Statement */}
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{
-            delay: 0.4,
-          }}
-          className="mx-auto mt-20 max-w-4xl text-center"
-        >
-          <p
-            className="
-              text-center
-              text-lg
-              leading-9
-              text-slate-400
-            "
-          >
-            Building intelligent software combining{" "}
-            <span className="font-semibold text-white">
-              Artificial Intelligence
-            </span>
-            ,{" "}
-            <span className="font-semibold text-white">
-              Backend Engineering
-            </span>{" "}
-            and{" "}
-            <span className="font-semibold text-white">
-              Cloud Infrastructure
-            </span>{" "}
-            to create scalable, production-ready solutions.
-          </p>
-        </motion.div>
-
-      </div>
-    </section>
+      {/* Bottom Glow */}
+      <div
+        className="
+          absolute
+          bottom-0
+          left-1/2
+          h-16
+          w-16
+          -translate-x-1/2
+          rounded-full
+          bg-cyan-500/10
+          blur-3xl
+          transition-all
+          duration-500
+          group-hover:bg-cyan-400/20
+        "
+      />
+    </motion.div>
   );
 }
